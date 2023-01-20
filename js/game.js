@@ -1,11 +1,9 @@
-function preLoad (){
+class Game {
+    constructor(){
+        this.ground = new Ground();
 
-}
-
-function setUp (){
-    createCanvas(600,600)
-}
-
-function draw (){
-    
+    }
+    draw(){
+        this.ground.draw();
+    }
 }
