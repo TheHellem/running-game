@@ -5,8 +5,8 @@ class Background {
     this.scrollSpeed = 3;
   }
   draw() {
-    image(game.bgImage, this.x1, 0, WIDTH, HEIGHT-150);
-    image(game.bgImage, this.x2, 0, WIDTH, HEIGHT-150);
+    image(game.bgImage, this.x1, 0, WIDTH, HEIGHT);
+    image(game.bgImage, this.x2, 0, WIDTH, HEIGHT);
 
     this.x1 -= this.scrollSpeed;
     this.x2 -= this.scrollSpeed;

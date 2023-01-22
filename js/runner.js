@@ -1,7 +1,7 @@
 
 class Runner {
 	constructor() {
-		this.width = 100
+		this.width = 140
 		this.height = 140
 		this.x = 0
 		this.y = 600 - this.height
