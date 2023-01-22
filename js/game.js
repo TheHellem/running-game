@@ -6,8 +6,8 @@ class Game {
 
     }
     preload(){
-        this.runnerImage = loadImage("../images/runner/runner-default.gif")
-        this.bgImage = loadImage("../images/background/background1.png")
+        this.runnerImage = loadImage("../assets/images/runner/runner-default.gif")
+        this.bgImage = loadImage("../assets/images/background/background1.png")
     }
     draw(){
         clear()
