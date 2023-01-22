@@ -9,6 +9,6 @@ class Ground {
   draw() {
     strokeWeight(5)
     color ("black")
-    line(this.x1, this.y1, this.x2, this.y2).draw();
+    const startLine = line(this.x1, this.y1, this.x2, this.y2)
   }
 }

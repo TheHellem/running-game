@@ -1,5 +1,8 @@
 const game = new Game();
 
+function preload(){
+  game.preload();
+}
 
 function setup() {
   createCanvas(WIDTH, HEIGHT)
@@ -7,5 +10,4 @@ function setup() {
 
 function draw() {
   game.draw();
-  background(152)
 }
