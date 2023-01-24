@@ -16,4 +16,4 @@ function keyPressed() {
 	if (keyCode === 32) {
 		game.runner.jump()
 	}
-}queueMicrotask
+}

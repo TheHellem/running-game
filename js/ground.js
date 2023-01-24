@@ -1,9 +1,9 @@
 class Ground {
   constructor() {
     this.x1 = 0;
-    this.y1 = (HEIGHT / 6)*5;
+    this.y1 = ((HEIGHT / 6) * 4.5)+73;
     this.x2 = WIDTH;
-    this.y2 = (HEIGHT / 6)*5;
+    this.y2 = ((HEIGHT / 6) * 4.5)+73;
   }
 
   draw() {

@@ -17,6 +17,6 @@ class Runner {
     image(game.runnerImage, this.x, this.y, this.width, this.height);
   }
   jump() {
-    this.velocity = -10;
+    this.velocity = -7;
   }
 }
