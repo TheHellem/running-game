@@ -7,7 +7,7 @@ class Game {
     this.obstacleImage;
     this.beers = [];
     this.beerImage;
-    this.scoreArr = [];
+    this.score = 0;
   }
   preload() {
     this.runnerImage = loadImage("../assets/images/runner/runner-default.gif");
@@ -27,20 +27,20 @@ class Game {
 
     // Beer section
     // Todo: write as much as possible of this in a function
-    if (frameCount % 300 === 0) {
-      this.beers.push(new Beer(this.beerImage));
-    }
+    if (frameCount % 300 === 0) this.beers.push(new Beer(this.beerImage));
 
     this.beers.forEach(function (beer) {
       beer.draw();
     });
 
     // Add point for each alcohol unit consumed
-    this.beers.forEach((beer => {
-        if (beer.collision(this.runner)){
-            this.runner.score++
-        }
-    }))
+    this.beers.forEach((beer) => {
+      if (beer.collision(this.runner)) {
+        this.score++;
+      }
+    });
+
+    console.log(this.score)
 
     this.beers = this.beers.filter((beer) => {
       if (beer.collision(this.runner) || beer.x < 0 - beer.width) {
@@ -66,5 +66,16 @@ class Game {
         return true;
       }
     });
+
+    this.increase(this.score)
+    console.log("Background:" + this.background.scrollSpeed)
   }
-}
+  drawElement (element) {
+    this.element.forEach(element => element.draw)
+  }
+  increase(score) {
+    this.background.changeSpeed(score)
+    //console.log(this.background.changeSpeed(this.score))
+    }
+  }
+

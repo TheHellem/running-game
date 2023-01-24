@@ -18,4 +18,8 @@ class Background {
       this.x2 = WIDTH-5;
     }
   }
+  changeSpeed(score){
+    this.scrollSpeed = score
+    console.log(score)
+  }
 }
