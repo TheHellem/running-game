@@ -68,14 +68,14 @@ class Game {
     });
 
     this.increase(this.score)
-    console.log("Background:" + this.background.scrollSpeed)
+    console.log("Background speed:" + this.background.scrollSpeed)
   }
   drawElement (element) {
     this.element.forEach(element => element.draw)
   }
   increase(score) {
     this.background.changeSpeed(score)
-    //console.log(this.background.changeSpeed(this.score))
+    console.log("game fn: " + score)
     }
   }
 
