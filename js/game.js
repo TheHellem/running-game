@@ -3,11 +3,11 @@ class Game {
     this.ground = new Ground();
     this.runner = new Runner();
     this.background = new Background();
-    this.beer = new Beer();
     this.obstacles = [];
     this.obstacleImage;
     this.beers = [];
     this.beerImage;
+    this.scoreArr = [];
   }
   preload() {
     this.runnerImage = loadImage("../assets/images/runner/runner-default.gif");
@@ -26,20 +26,28 @@ class Game {
     this.runner.draw();
 
     // Beer section
+    // Todo: write as much as possible of this in a function
     if (frameCount % 300 === 0) {
-      this.beers.push(new Beer (this.beerImage));
+      this.beers.push(new Beer(this.beerImage));
     }
 
     this.beers.forEach(function (beer) {
       beer.draw();
     });
 
-    this.beers = this.beers.filter(beer => {
-        if (beer.collision(this.runner) || beer.x < 0 - beer.width) {
-            return false
-        } else {
-            return true
+    // Add point for each alcohol unit consumed
+    this.beers.forEach((beer => {
+        if (beer.collision(this.runner)){
+            this.runner.score++
         }
+    }))
+
+    this.beers = this.beers.filter((beer) => {
+      if (beer.collision(this.runner) || beer.x < 0 - beer.width) {
+        return false;
+      } else {
+        return true;
+      }
     });
 
     // Obstacle section

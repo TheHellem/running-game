@@ -17,3 +17,4 @@ function keyPressed() {
 		game.runner.jump()
 	}
 }
+

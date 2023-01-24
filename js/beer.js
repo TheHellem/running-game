@@ -2,8 +2,7 @@ class Beer {
   constructor(image) {
     this.image = image;
     this.x = WIDTH;
-    this.y = 550;
-    console.log("y"+this.y)
+    this.y = (HEIGHT / 6) * 4.5+25;
     this.height = 50;
     this.width = 50;
     this.xVelocity = 3;
@@ -22,8 +21,6 @@ class Beer {
     if (dist(beerX, beerY, playerX, playerY) > 50) {
       return false;
     } else {
-      playerInfo.score++;
-
       return true;
     }
   }
