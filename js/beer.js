@@ -24,4 +24,7 @@ class Beer {
       return true;
     }
   }
+  changeSpeed(speedSetting) {
+    this.xVelocity=speedSetting;
+  }
 }

@@ -18,4 +18,7 @@ class Obstacle {
     let playerX = playerInfo.x + playerInfo.width / 2;
     let playerY = playerInfo.y + playerInfo.height / 2;
   }
+  changeSpeed(speedSetting) {
+    this.xVelocity=speedSetting;
+  }
 }

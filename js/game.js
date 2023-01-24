@@ -25,13 +25,19 @@ class Game {
     this.ground.draw();
     this.runner.draw();
 
+    let speedVar = this.increase(this.score)
+    console.log("speedvar" + speedVar)
+
     // Beer section
     // Todo: write as much as possible of this in a function
     if (frameCount % 300 === 0) this.beers.push(new Beer(this.beerImage));
 
     this.beers.forEach(function (beer) {
+      beer.changeSpeed(speedVar)
       beer.draw();
+      console.log("øl hastighet;" + beer.xVelocity)
     });
+
 
     // Add point for each alcohol unit consumed
     this.beers.forEach((beer) => {
@@ -40,7 +46,6 @@ class Game {
       }
     });
 
-    console.log(this.score)
 
     this.beers = this.beers.filter((beer) => {
       if (beer.collision(this.runner) || beer.x < 0 - beer.width) {
@@ -56,6 +61,7 @@ class Game {
     }
 
     this.obstacles.forEach(function (obstacle) {
+      obstacle.changeSpeed(speedVar)
       obstacle.draw();
     });
 
@@ -67,15 +73,30 @@ class Game {
       }
     });
 
-    this.increase(this.score)
-    console.log("Background speed:" + this.background.scrollSpeed)
+    // Change background speed
+
+    this.background.changeSpeed(speedVar)
+
   }
+  // currently not doing anything, but I like the idea
   drawElement (element) {
     this.element.forEach(element => element.draw)
   }
-  increase(score) {
-    this.background.changeSpeed(score)
-    console.log("game fn: " + score)
+  increase(score) { 
+    let speedSetting;
+    if (score >= 0 && score <=2){
+      speedSetting = 3;
+    } else if (score >= 3 && score <= 6) {
+      speedSetting= 4;
+    } else if (score >= 7 && score <= 9) {
+      speedSetting = 8;
+    } else if (score >= 10 && score <= 12){
+      speedSetting = 12;
+    } else {
+      speedSetting = 16;
+    }
+
+    return speedSetting
     }
   }
 
