@@ -26,7 +26,6 @@ class Game {
     this.runner.draw();
 
     let speedVar = this.increase(this.score)
-    console.log("speedvar" + speedVar)
 
     // Beer section
     // Todo: write as much as possible of this in a function
@@ -35,7 +34,6 @@ class Game {
     this.beers.forEach(function (beer) {
       beer.changeSpeed(speedVar)
       beer.draw();
-      console.log("øl hastighet;" + beer.xVelocity)
     });
 
 

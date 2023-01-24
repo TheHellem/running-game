@@ -17,7 +17,13 @@ class Obstacle {
 
     let playerX = playerInfo.x + playerInfo.width / 2;
     let playerY = playerInfo.y + playerInfo.height / 2;
+  
+  if (dist(obstacleX, obstacleY, playerX, playerY) > 50) {
+    return false;
+  } else {
+    return true;
   }
+}
   changeSpeed(speedSetting) {
     this.xVelocity=speedSetting;
   }

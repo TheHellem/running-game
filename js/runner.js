@@ -6,15 +6,13 @@ class Runner {
     this.y = (HEIGHT / 6) * 4.5;
     this.velocity = 0;
     this.gravity = 0.2;
-    this.score = 0;
   }
   draw() {
     this.velocity += this.gravity;
     this.y += this.velocity;
 
-    if (this.y >= 600 - this.height) {
-      this.y = 600 - this.height;
-    }
+    if (this.y >= 600 - this.height) this.y = 600 - this.height;
+
     image(game.runnerImage, this.x, this.y, this.width, this.height);
   }
   jump() {
