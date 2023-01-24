@@ -1,7 +1,7 @@
 class Obstacle {
   constructor(image) {
     this.image = image;
-    this.x = width
+    this.x = width;
     this.y = (HEIGHT / 6) * 4.5+25;
     this.heigth = 50;
     this.width = 50;
@@ -17,13 +17,5 @@ class Obstacle {
 
     let playerX = playerInfo.x + playerInfo.width / 2;
     let playerY = playerInfo.y + playerInfo.height / 2;
-
-    if (dist(obstacleX, obstacleY, playerX, playerY) > 25) {
-      return false;
-    } else {
-      playerInfo.score++;
-
-      return true;
-    }
   }
 }
