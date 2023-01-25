@@ -5,11 +5,14 @@ class Game {
   constructor() {
     this.runner = new Runner();
     this.background = new Background();
+
     this.cones = [];
     this.coneImage;
     this.beers = [];
     this.beerImage;
     this.score = 0;
+
+    this.resetbutton;
   }
   preload() {
     this.runnerImage = loadImage("../assets/images/runner/runner-default.gif");
@@ -21,6 +24,9 @@ class Game {
     );
     this.beerImage = loadImage("../assets/icons/tropical-dring.svg");
   }
+  setup(){
+    
+  }
   draw() {
     clear();
     this.background.draw();
@@ -31,7 +37,7 @@ class Game {
     // Adjust difficulty in accordance with score
     let speedVar = this.increaseDifficulty(this.score);
 
-    //// Beer section
+    //// Tropical drink section (was supposed to be beer, but decided to add some class)
     if (frameCount % 300 === 0) this.beers.push(new Beer(this.beerImage));
     this.drawObstacle(this.beers, speedVar);
     this.beers.forEach((beer) => {
@@ -57,7 +63,6 @@ class Game {
     this.cones.forEach((cone) => {
       if (cone.collision(this.runner)) {
         this.showGameOverScreen(this.score);
-        gameOver = true // hvorfor
       }
     });
   }
@@ -93,6 +98,7 @@ class Game {
     return speedSetting.setting;
   }
   showGameOverScreen(score) {
+    //probably should use fractions here
     rect(WIDTH / 6, HEIGHT / 8, 400, 500, 20);
 
     // Game over message
@@ -105,6 +111,9 @@ class Game {
     textSize(40);
     textFont("monospace");
     text(`= ${score}`, 290, 310, 100, 100);
+
+    this.resetbutton = new ResetButton('Play again', 600/2, 700/1.6);
+    this.resetbutton.draw();
 
     noLoop();
   }

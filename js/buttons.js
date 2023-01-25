@@ -10,17 +10,27 @@ class Button {
     this.button.position(this.x, this.y);
     this.button.center("horizontal");
     this.button.addClass("action-button");
-    this.button.mousePressed(() => this.changeState());
   }
 }
 
-class StartButton extends Button{
-  constructor(text, x, y){
-    super(text, x, y)
+class StartButton extends Button {
+  constructor(text, x, y) {
+    super(text, x, y);
+    this.button.mousePressed(() => this.changeState());
   }
   changeState() {
     this.button.remove();
-    this.button = null;
     currentGameState = "game";
+  }
+}
+
+class ResetButton extends Button {
+  constructor(text, x, y) {
+    super(text, x, y);
+    this.button.mousePressed(() => this.restartGame());
+  }
+  restartGame() {
+    this.button.remove();
+    loop();
   }
 }
