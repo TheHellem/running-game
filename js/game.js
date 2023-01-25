@@ -3,10 +3,8 @@ const WIDTH = 600;
 
 class Game {
   constructor() {
-    this.ground = new Ground();
     this.runner = new Runner();
     this.background = new Background();
-
     this.cones = [];
     this.coneImage;
     this.beers = [];
@@ -26,8 +24,9 @@ class Game {
   draw() {
     clear();
     this.background.draw();
-    this.ground.draw();
     this.runner.draw();
+
+    this.drawGround();
 
     // Adjust difficulty in accordance with score
     let speedVar = this.increaseDifficulty(this.score);
@@ -56,8 +55,21 @@ class Game {
     //// Game over:
 
     this.cones.forEach((cone) => {
-      if (cone.collision(this.runner)) this.showGameOverScreen(this.score);
+      if (cone.collision(this.runner)) {
+        this.showGameOverScreen(this.score);
+        gameOver = true // hvorfor
+      }
     });
+  }
+  drawGround() {
+    strokeWeight(2);
+    color("black");
+    const startLine = line(
+      0,
+      (HEIGHT / 6) * 4.5 + 73,
+      WIDTH,
+      (HEIGHT / 6) * 4.5 + 73
+    );
   }
   drawObstacle(element, speedVar) {
     element.forEach(function (obstacle) {
