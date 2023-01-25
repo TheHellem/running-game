@@ -66,8 +66,7 @@ class Game {
 
     this.cones.forEach((cone) => {
       if (cone.collision(this.runner)) {
-        this.showGameOverScreen();
-        noloop()
+        this.showGameOverScreen(this.score);
       }
     });
 
@@ -82,11 +81,11 @@ class Game {
   increaseDifficulty(score) {
     // Need to adjust bakground mess when changing speeds
     const speedSettings = [
-      { range: [0, 2], setting: 12 },
-      { range: [3, 6], setting: 4 },
-      { range: [7, 9], setting: 8 },
-      { range: [10, 12], setting: 12 },
-      { range: [13, Infinity], setting: 16 },
+      { range: [0, 2], setting: 8 },
+      { range: [3, 6], setting: 12 },
+      { range: [7, 9], setting: 16 },
+      { range: [10, 12], setting: 20 },
+      { range: [13, Infinity], setting: 24 },
     ];
 
     const speedSetting = speedSettings.find(
@@ -94,15 +93,24 @@ class Game {
     );
     return speedSetting.setting;
   }
-  showGameOverScreen(){
-
+  showGameOverScreen(score){
     // Pop up window
     rect(WIDTH/6, HEIGHT/8, 400, 500, 20)
+
+    //text
     textSize(60);
     textFont('monospace')
     text('GAME OVER', 135, 200, 400, 200);
 
-    // score
-    
+    // score (kan bruke .hide her for å gjemme andre score)
+    image(this.beerImage, 220, 300, 50, 50)
+
+    textSize(40)
+    textFont('monospace')
+    text(`= ${score}`, 290, 310, 100, 100)
+
+    // temp restart - kan muligens gjøre dette bedre
+
+    noLoop()
   }
 }
