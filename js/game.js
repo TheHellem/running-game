@@ -31,11 +31,9 @@ class Game {
     );
     this.beerImage = loadImage("../assets/icons/tropical-dring.svg");
   }
-  setup(){
-    
-  }
   draw() {
     clear();
+    noCursor();
     this.background.draw();
     this.runner.draw();
 
@@ -108,6 +106,7 @@ class Game {
   }
   showGameOverScreen(score) {
     //probably should use fractions here
+    ellipse(mouseX, mouseY, 10, 10);
     rect(WIDTH / 6, HEIGHT / 8, 400, 500, 20);
 
     // Game over message
