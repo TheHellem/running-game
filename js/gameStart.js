@@ -11,6 +11,9 @@ class GameStart {
     }
     draw(){
         background(255,255,255)
+
+        text("Stickman Sprint: The Adventur Begins",)
+
         this.startButton.draw()
     }
 }

@@ -49,7 +49,7 @@ class Game {
     );
 
     //// Obstacle section
-    if (frameCount % 240 === 0) this.cones.push(new Cone(this.coneImage));
+    if (frameCount % 229 === 0) this.cones.push(new Cone(this.coneImage));
     this.drawObstacle(this.cones, speedVar);
     this.cones = this.cones.filter((cone) =>
       cone.x < 0 - cone.width ? false : true
@@ -85,11 +85,13 @@ class Game {
   increaseDifficulty(score) {
     // Need to adjust bakground mess when changing speeds
     const speedSettings = [
-      { range: [0, 2], setting: 8 },
+      { range: [0, 2], setting: 10 },
       { range: [3, 6], setting: 12 },
       { range: [7, 9], setting: 16 },
       { range: [10, 12], setting: 20 },
-      { range: [13, Infinity], setting: 24 },
+      { range: [13, 14], setting: 24 },
+      { range: [15, 16], setting: 28 },
+      { range: [17, Infinity], setting: 30 },
     ];
 
     const speedSetting = speedSettings.find(
