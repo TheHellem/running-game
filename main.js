@@ -17,10 +17,6 @@ function preload() {
 function setup() {
   start.setup();
   createCanvas(600, 700);
-  // Ad hoc solution to not draw the resetbutton to early
-  if (gameOver){
-    game.setup()
-  }
 }
 
 function draw() {

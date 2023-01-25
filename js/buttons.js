@@ -31,6 +31,7 @@ class ResetButton extends Button {
   }
   restartGame() {
     this.button.remove();
+    game.resetGame()
     loop();
   }
 }

@@ -117,4 +117,10 @@ class Game {
 
     noLoop();
   }
+  resetGame(){
+    this.score = 0;
+    this.cones = [];
+    this.beers = [];
+
+  }
 }
