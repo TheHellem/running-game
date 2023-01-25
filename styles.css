@@ -3,6 +3,6 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background-image: url("./assets/images/page-background/pexels-fwstudio-131667.jpg");
-    background-size: cover;
+    background-color: black;
+    padding-top: 100px;
 }
