@@ -34,14 +34,9 @@ class Game {
 
     //// Beer section
     if (frameCount % 300 === 0) this.beers.push(new Beer(this.beerImage));
-
-    this.drawObstacle(this.beers, speedVar)
-
-    // Add point for each alcohol unit consumed
+    this.drawObstacle(this.beers, speedVar);
     this.beers.forEach((beer) => {
-      if (beer.collision(this.runner)) {
-        this.score++;
-      }
+      if (beer.collision(this.runner)) this.score++;
     });
 
     this.beers = this.beers.filter((beer) =>
@@ -49,12 +44,8 @@ class Game {
     );
 
     //// Obstacle section
-    if (frameCount % 240 === 0) {
-      this.cones.push(new Cone (this.coneImage));
-    }
-
-    this.drawObstacle(this.cones, speedVar)
-
+    if (frameCount % 240 === 0) this.cones.push(new Cone(this.coneImage));
+    this.drawObstacle(this.cones, speedVar);
     this.cones = this.cones.filter((cone) =>
       cone.x < 0 - cone.width ? false : true
     );
@@ -65,17 +56,13 @@ class Game {
     //// Game over:
 
     this.cones.forEach((cone) => {
-      if (cone.collision(this.runner)) {
-        this.showGameOverScreen(this.score);
-      }
+      if (cone.collision(this.runner)) this.showGameOverScreen(this.score);
     });
-
-
   }
-  drawObstacle(element, speedVar){
+  drawObstacle(element, speedVar) {
     element.forEach(function (obstacle) {
-    obstacle.changeSpeed(speedVar);
-    obstacle.draw();
+      obstacle.changeSpeed(speedVar);
+      obstacle.draw();
     });
   }
   increaseDifficulty(score) {
@@ -93,24 +80,20 @@ class Game {
     );
     return speedSetting.setting;
   }
-  showGameOverScreen(score){
-    // Pop up window
-    rect(WIDTH/6, HEIGHT/8, 400, 500, 20)
+  showGameOverScreen(score) {
+    rect(WIDTH / 6, HEIGHT / 8, 400, 500, 20);
 
-    //text
+    // Game over message
     textSize(60);
-    textFont('monospace')
-    text('GAME OVER', 135, 200, 400, 200);
+    textFont("monospace");
+    text("GAME OVER", 135, 200, 400, 200);
 
-    // score (kan bruke .hide her for å gjemme andre score)
-    image(this.beerImage, 220, 300, 50, 50)
+    // Display final score
+    image(this.beerImage, 220, 300, 50, 50);
+    textSize(40);
+    textFont("monospace");
+    text(`= ${score}`, 290, 310, 100, 100);
 
-    textSize(40)
-    textFont('monospace')
-    text(`= ${score}`, 290, 310, 100, 100)
-
-    // temp restart - kan muligens gjøre dette bedre
-
-    noLoop()
+    noLoop();
   }
 }
