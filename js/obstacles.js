@@ -35,3 +35,10 @@ class Beer extends Obstacle {
 
   }
 }
+
+class Cone extends Obstacle {
+  constructor(image){
+    super(image)
+
+  }
+}

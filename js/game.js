@@ -3,8 +3,8 @@ class Game {
     this.ground = new Ground();
     this.runner = new Runner();
     this.background = new Background();
-    this.obstacles = [];
-    this.obstacleImage;
+    this.cones = [];
+    this.coneImage;
     this.beers = [];
     this.beerImage;
     this.score = 0;
@@ -14,7 +14,7 @@ class Game {
     this.bgImage = loadImage(
       "../assets/images/game-background/background1.png"
     );
-    this.obstacleImage = loadImage(
+    this.coneImage = loadImage(
       "../assets/icons/construction-traffic-cone-icon.svg"
     );
     this.beerImage = loadImage("../assets/icons/tropical-dring.svg");
@@ -25,17 +25,13 @@ class Game {
     this.ground.draw();
     this.runner.draw();
 
-    let speedVar = this.increase(this.score)
+    // Adjust difficulty in accordance with score
+    let speedVar = this.increaseDifficulty(this.score);
 
     // Beer section
-    // Todo: write as much as possible of this in a function
     if (frameCount % 300 === 0) this.beers.push(new Beer(this.beerImage));
 
-    this.beers.forEach(function (beer) {
-      beer.changeSpeed(speedVar)
-      beer.draw();
-    });
-
+    this.drawObstacle(this.beers, speedVar)
 
     // Add point for each alcohol unit consumed
     this.beers.forEach((beer) => {
@@ -44,57 +40,43 @@ class Game {
       }
     });
 
-
-    this.beers = this.beers.filter((beer) => {
-      if (beer.collision(this.runner) || beer.x < 0 - beer.width) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    this.beers = this.beers.filter((beer) =>
+      beer.collision(this.runner) || beer.x < 0 - beer.width ? false : true
+    );
 
     // Obstacle section
     if (frameCount % 240 === 0) {
-      this.obstacles.push(new Obstacle(this.obstacleImage));
+      this.cones.push(new Cone (this.coneImage));
     }
 
-    this.obstacles.forEach(function (obstacle) {
-      obstacle.changeSpeed(speedVar)
-      obstacle.draw();
-    });
+    this.drawObstacle(this.cones, speedVar)
 
-    this.obstacles = this.obstacles.filter((obstacle) => {
-      if (obstacle.x < 0 - obstacle.width) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    this.cones = this.cones.filter((cone) =>
+      cone.x < 0 - cone.width ? false : true
+    );
 
     // Change background speed
-
-    this.background.changeSpeed(speedVar)
+    this.background.changeSpeed(speedVar);
+  }
+  drawObstacle(element, speedVar){
+    element.forEach(function (obstacle) {
+    obstacle.changeSpeed(speedVar);
+    obstacle.draw();
+    });
 
   }
-  // currently not doing anything, but I like the idea
-  drawElement (element) {
-    this.element.forEach(element => element.draw)
-  }
-  increase(score) { 
-    let speedSetting;
-    if (score >= 0 && score <=2){
-      speedSetting = 3;
-    } else if (score >= 3 && score <= 6) {
-      speedSetting= 4;
-    } else if (score >= 7 && score <= 9) {
-      speedSetting = 8;
-    } else if (score >= 10 && score <= 12){
-      speedSetting = 12;
-    } else {
-      speedSetting = 16;
-    }
+  increaseDifficulty(score) {
+    const speedSettings = [
+      { range: [0, 2], setting: 3 },
+      { range: [3, 6], setting: 4 },
+      { range: [7, 9], setting: 8 },
+      { range: [10, 12], setting: 12 },
+      { range: [13, Infinity], setting: 16 },
+    ];
 
-    return speedSetting
-    }
+    const speedSetting = speedSettings.find(
+      (item) => score >= item.range[0] && score <= item.range[1]
+    );
+    return speedSetting.setting;
   }
-
+}
