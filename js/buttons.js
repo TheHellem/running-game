@@ -7,9 +7,15 @@ class Button {
   }
 
   draw() {
+    colorMode(RGB)
+    let bgColor = color(255,255,255)
     this.button.position(this.x, this.y);
     this.button.center("horizontal");
     this.button.addClass("action-button");
+    this.button.style("background-color", bgColor);
+    this.button.style("font-family", "Monospace")
+    this.button.style("font-size", "24px")
+    this.button.size(200,100)
   }
 }
 

@@ -15,7 +15,14 @@ class Game {
     this.resetbutton;
   }
   preload() {
-    this.runnerImage = loadImage("../assets/images/runner/runner-default.gif");
+    this.runnerImages = [
+      { src: loadImage("../assets/images/runner/runner_normal.gif")},
+      { src: loadImage("../assets/images/runner/runner_happy.gif")},
+			{ src: loadImage("../assets/images/runner/runner_drunk.gif")},
+			{ src: loadImage("../assets/images/runner/runner_jump.gif")},
+			{ src: loadImage("../assets/images/runner/runner_surprised.gif")}
+    ]
+    
     this.bgImage = loadImage(
       "../assets/images/game-background/background1.png"
     );
@@ -112,9 +119,9 @@ class Game {
     image(this.beerImage, 220, 300, 50, 50);
     textSize(40);
     textFont("monospace");
-    text(`= ${score}`, 290, 310, 100, 100);
+    text(`= ${score}`, 290, 310, 200, 100);
 
-    this.resetbutton = new ResetButton('Play again', 600/2, 700/1.6);
+    this.resetbutton = new ResetButton('Play again', (600/ 2), 700 / 1.6);
     this.resetbutton.draw();
 
     noLoop();
