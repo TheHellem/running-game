@@ -25,6 +25,7 @@ class StartButton extends Button {
     this.button.mousePressed(() => this.changeState());
   }
   changeState() {
+    game.buttonPressSound.play()
     this.button.remove();
     currentGameState = "game";
   }
@@ -36,6 +37,7 @@ class ResetButton extends Button {
     this.button.mousePressed(() => this.restartGame());
   }
   restartGame() {
+    game.buttonResetSound.play()
     this.button.remove();
     game.resetGame()
     loop();

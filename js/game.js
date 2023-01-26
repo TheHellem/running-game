@@ -17,6 +17,8 @@ class Game {
     this.jumpSound;
     this.startMusic;
     this.tropicalDrinkSound;
+    this.buttonPressSound;
+    this.buttonResetSound;
   }
   preload() {
 
@@ -42,6 +44,9 @@ class Game {
     this.jumpSound = loadSound("assets/soundEffects/runner_jump.mp3")
     this.tropicalDrinkSound = loadSound("assets/soundEffects/tropical_drink.mp3")
     this.crashSound = loadSound("assets/soundEffects/crash.mp3")
+    this.buttonPressSound = loadSound("assets/soundEffects/button.mp3")
+    this.buttonResetSound = loadSound("assets/soundEffects/button_resett.mp3")
+
   }
   draw() {
     clear();
