@@ -72,7 +72,9 @@ class Game {
     });
 
     // score
-    if (gameOver === false) this.displayScore(this.score);
+    if (gameOver === false) {
+      this.displayScore(this.score);
+    }
 
   }
   drawGround() {
@@ -115,8 +117,8 @@ class Game {
     return speedSetting.setting;
   }
   showGameOverScreen(score) {
+    cursor(); // this line somehow creates a lag
     //probably should use fractions here
-    ellipse(mouseX, mouseY, 10, 10);
     rect(WIDTH / 6, HEIGHT / 8, 400, 500, 20);
 
     // Game over message

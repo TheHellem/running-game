@@ -15,6 +15,7 @@ class Button {
     this.button.style("font-family", "Monospace")
     this.button.style("font-size", "24px")
     this.button.size(200,100)
+    this.button.center("horizontal")
   }
 }
 

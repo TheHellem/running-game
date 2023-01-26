@@ -28,7 +28,7 @@ class GameStart {
 
   }
   setup() {
-    this.startButton = new StartButton("Start Game", 450, 600);
+    this.startButton = new StartButton("Start Game", 100, 600);
   }
   draw() {
     background(255, 255, 255);
