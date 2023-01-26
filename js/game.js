@@ -38,7 +38,7 @@ class Game {
     this.beerImage = loadImage("assets/icons/tropical-dring.svg");
 
     // sound
-    this.startMusic = loadSound("https://thehellem.github.io/running-game/assets/backgroundMusic/start-menu.mp3")
+    this.startMusic = loadSound("assets/backgroundMusic/start-menu.mp3")
     this.jumpSound = loadSound("assets/soundEffects/runner_jump.mp3")
     this.tropicalDrinkSound = loadSound("assets/soundEffects/tropical_drink.mp3")
     this.crashSound = loadSound("assets/soundEffects/crash.mp3")
