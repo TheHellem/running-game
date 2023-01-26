@@ -66,9 +66,14 @@ class Game {
 
     this.cones.forEach((cone) => {
       if (cone.collision(this.runner)) {
+        gameOver = true;
         this.showGameOverScreen(this.score);
       }
     });
+
+    // score
+    if (gameOver === false) this.displayScore(this.score);
+
   }
   drawGround() {
     strokeWeight(2);
@@ -85,6 +90,12 @@ class Game {
       obstacle.changeSpeed(speedVar);
       obstacle.draw();
     });
+  }
+  displayScore(score){
+      image(this.beerImage, 450, 20, 45, 45)
+      textSize(35)
+      textFont("monospace")
+      text(`= ${score}`, 510, 30, 200, 100);      
   }
   increaseDifficulty(score) {
     // Need to adjust bakground mess when changing speeds
@@ -128,6 +139,7 @@ class Game {
     this.score = 0;
     this.cones = [];
     this.beers = [];
+    gameOver = false;
 
   }
 }
