@@ -5,7 +5,7 @@ class GameStart {
 
     }
     preload(){
-        this.image = loadImage("assets/images/runner_wave.gif")
+        this.image = loadImage("assets/images/runner/runner_wave.gif")
     }
     setup(){
         this.startButton = new StartButton('Start Game', 600/ 2, 700 / 1.6);
