@@ -29,6 +29,8 @@ class Obstacle {
   }
 }
 
+// A bit uneccesary to two clases that extends c
+
 class Beer extends Obstacle {
   constructor(image){
     super(image)
