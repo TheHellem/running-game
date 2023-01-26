@@ -10,7 +10,6 @@ class Button {
     colorMode(RGB)
     let bgColor = color(255,255,255)
     this.button.position(this.x, this.y);
-    this.button.center("horizontal");
     this.button.addClass("action-button");
     this.button.style("background-color", bgColor);
     this.button.style("font-family", "Monospace")

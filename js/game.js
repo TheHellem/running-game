@@ -36,7 +36,6 @@ class Game {
     noCursor();
     this.background.draw();
     this.runner.draw();
-
     this.drawGround();
 
     // Adjust difficulty in accordance with score
@@ -120,7 +119,7 @@ class Game {
     textFont("monospace");
     text(`= ${score}`, 290, 310, 200, 100);
 
-    this.resetbutton = new ResetButton('Play again', (600/ 2), 700 / 1.6);
+    this.resetbutton = new ResetButton('Play again', 450, 500);
     this.resetbutton.draw();
 
     noLoop();
