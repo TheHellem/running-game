@@ -38,10 +38,10 @@ class Game {
     this.beerImage = loadImage("assets/icons/tropical-dring.svg");
 
     // sound
-    this.startMusic = loadSound("assets/background-music/start-menu.mp3")
-    this.jumpSound = loadSound("assets/sound-effects/runner_jump.mp3")
-    this.tropicalDrinkSound = loadSound("assets/sound-effects/tropical_drink.mp3")
-    this.crashSound = loadSound("assets/sound-effects/crash.mp3")
+    this.startMusic = loadSound("../assets/background-music/start-menu.mp3")
+    this.jumpSound = loadSound("../assets/sound-effects/runner_jump.mp3")
+    this.tropicalDrinkSound = loadSound("../assets/sound-effects/tropical_drink.mp3")
+    this.crashSound = loadSound("../assets/sound-effects/crash.mp3")
   }
   draw() {
     clear();
