@@ -13,8 +13,14 @@ class Game {
     this.score = 0;
 
     this.resetbutton;
+
+    this.jumpSound;
+    this.startMusic;
+    this.tropicalDrinkSound;
   }
   preload() {
+
+    // images
     this.runnerImages = [
       { src: loadImage("assets/images/runner/runner_normal.gif")},
       { src: loadImage("assets/images/runner/runner_happy.gif")},
@@ -30,6 +36,12 @@ class Game {
       "assets/icons/construction-traffic-cone-icon.svg"
     );
     this.beerImage = loadImage("assets/icons/tropical-dring.svg");
+
+    // sound
+    this.startMusic = loadSound("../assets/background-music/start-menu.mp3")
+    this.jumpSound = loadSound("../assets/sound-effects/runner_jump.mp3")
+    this.tropicalDrinkSound = loadSound("../assets/sound-effects/tropical_drink.mp3")
+    this.crashSound = loadSound("../assets/sound-effects/crash.mp3")
   }
   draw() {
     clear();
@@ -38,6 +50,8 @@ class Game {
     this.runner.draw();
     this.drawGround();
 
+    if (!this.startMusic.isPlaying()) this.startMusic.loop()
+
     // Adjust difficulty in accordance with score
     let speedVar = this.increaseDifficulty(this.score);
 
@@ -45,7 +59,10 @@ class Game {
     if (frameCount % 300 === 0) this.beers.push(new Beer(this.beerImage));
     this.drawObstacle(this.beers, speedVar);
     this.beers.forEach((beer) => {
-      if (beer.collision(this.runner)) this.score++;
+      if (beer.collision(this.runner)) {
+        this.tropicalDrinkSound.play()
+        this.score++;
+      }
     });
 
     this.beers = this.beers.filter((beer) =>
@@ -66,8 +83,10 @@ class Game {
 
     this.cones.forEach((cone) => {
       if (cone.collision(this.runner)) {
+        this.crashSound.play()
         gameOver = true;
         this.showGameOverScreen(this.score);
+        this.startMusic.stop()
       }
     });
 

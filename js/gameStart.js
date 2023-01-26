@@ -16,6 +16,7 @@ class GameStart {
     this.width2 = 150;
     this.heigth2 = 30;
 
+    
   }
   preload() {
     this.image = loadImage("assets/images/runner/runner_wave.gif");
@@ -24,13 +25,13 @@ class GameStart {
     );
     this.beerImage = loadImage("assets/icons/tropical-dring.svg");
     this.spacebarImage = loadImage("assets/icons/spacebar.svg");
-
-
   }
   setup() {
     this.startButton = new StartButton("Start Game", 100, 600);
   }
   draw() {
+    
+
     background(255, 255, 255);
     image(this.image, 0, 100, 400, 400);
 

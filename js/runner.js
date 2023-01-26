@@ -38,7 +38,10 @@ class Runner {
   }
   jump() {
     if (this.y === 600 - this.height){
+      game.jumpSound.play()
       this.velocity = -7;
+      
+
 
     }
     
