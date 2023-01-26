@@ -16,20 +16,20 @@ class Game {
   }
   preload() {
     this.runnerImages = [
-      { src: loadImage("../assets/images/runner/runner_normal.gif")},
-      { src: loadImage("../assets/images/runner/runner_happy.gif")},
-			{ src: loadImage("../assets/images/runner/runner_drunk.gif")},
-			{ src: loadImage("../assets/images/runner/runner_jump.gif")},
-			{ src: loadImage("../assets/images/runner/runner_surprised.gif")}
+      { src: loadImage("assets/images/runner/runner_normal.gif")},
+      { src: loadImage("assets/images/runner/runner_happy.gif")},
+			{ src: loadImage("assets/images/runner/runner_drunk.gif")},
+			{ src: loadImage("assets/images/runner/runner_jump.gif")},
+			{ src: loadImage("assets/images/runner/runner_surprised.gif")}
     ]
     
     this.bgImage = loadImage(
-      "../assets/images/game-background/background1.png"
+      "assets/images/game-background/background1.png"
     );
     this.coneImage = loadImage(
-      "../assets/icons/construction-traffic-cone-icon.svg"
+      "assets/icons/construction-traffic-cone-icon.svg"
     );
-    this.beerImage = loadImage("../assets/icons/tropical-dring.svg");
+    this.beerImage = loadImage("assets/icons/tropical-dring.svg");
   }
   draw() {
     clear();
