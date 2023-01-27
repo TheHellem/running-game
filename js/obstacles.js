@@ -2,7 +2,7 @@ class Obstacle {
   constructor(image) {
     this.image = image;
     this.x = WIDTH;
-    this.y = (HEIGHT / 6) * 4.5+25;
+    this.y = (HEIGHT / 6) * 4.5 + 25;
     this.height = 50;
     this.width = 50;
     this.xVelocity = 3;
@@ -29,8 +29,7 @@ class Obstacle {
   }
 }
 
-// A bit uneccesary to two clases that extends c
-
+// Extended the class in anticipation that I might do something. I did nothing.
 class Beer extends Obstacle {
   constructor(image){
     super(image)

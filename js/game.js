@@ -31,12 +31,8 @@ class Game {
 			{ src: loadImage("assets/images/runner/runner_surprised.gif")}
     ]
     
-    this.bgImage = loadImage(
-      "assets/images/game-background/background1.png"
-    );
-    this.coneImage = loadImage(
-      "assets/icons/construction-traffic-cone-icon.svg"
-    );
+    this.bgImage = loadImage("assets/images/game-background/background1.png");
+    this.coneImage = loadImage("assets/icons/construction-traffic-cone-icon.svg");
     this.beerImage = loadImage("assets/icons/tropical-dring.svg");
 
     // sound
@@ -74,18 +70,17 @@ class Game {
       beer.collision(this.runner) || beer.x < 0 - beer.width ? false : true
     );
 
-    //// Obstacle section
+    //// Cone section
     if (frameCount % 229 === 0) this.cones.push(new Cone(this.coneImage));
     this.drawObstacle(this.cones, speedVar);
     this.cones = this.cones.filter((cone) =>
       cone.x < 0 - cone.width ? false : true
     );
 
-    // Change background speed
+    // Adjust background according to score
     this.background.changeSpeed(speedVar);
 
     //// Game over:
-
     this.cones.forEach((cone) => {
       if (cone.collision(this.runner)) {
         this.crashSound.play()
@@ -95,36 +90,31 @@ class Game {
       }
     });
 
-    // score
-    if (gameOver === false) {
-      this.displayScore(this.score);
-    }
+    // Score on screen
+    if (gameOver === false) this.displayScore(this.score);
 
   }
   drawGround() {
     strokeWeight(2);
     color("black");
-    const startLine = line(
-      0,
-      (HEIGHT / 6) * 4.5 + 73,
-      WIDTH,
-      (HEIGHT / 6) * 4.5 + 73
-    );
+    const startLine = line(0, (HEIGHT / 6) * 4.5 + 73, WIDTH, (HEIGHT / 6) * 4.5 + 73);
+
   }
   drawObstacle(element, speedVar) {
     element.forEach(function (obstacle) {
       obstacle.changeSpeed(speedVar);
       obstacle.draw();
     });
+
   }
   displayScore(score){
       image(this.beerImage, 450, 20, 45, 45)
       textSize(35)
       textFont("monospace")
-      text(`= ${score}`, 510, 30, 200, 100);      
+      text(`= ${score}`, 510, 30, 200, 100); 
+
   }
   increaseDifficulty(score) {
-    // Need to adjust bakground mess when changing speeds
     const speedSettings = [
       { range: [0, 2], setting: 10 },
       { range: [3, 6], setting: 12 },
@@ -141,8 +131,7 @@ class Game {
     return speedSetting.setting;
   }
   showGameOverScreen(score) {
-    cursor(); // this line somehow creates a lag
-    //probably should use fractions here
+    cursor(); 
     rect(WIDTH / 6, HEIGHT / 8, 400, 500, 20);
 
     // Game over message
