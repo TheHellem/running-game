@@ -16,6 +16,12 @@ the gameplay:
 
 ![plot](./screenshots/Screenshot%20from%202023-01-27%2010-17-36.png)
 
+The charachters face will change as the speed increases.
+
+## Limitations
+
+The game will not run on Mozilla FireFox per 28.01.2023. Will however run on Chrome.
+
 ## Mentions
 
 Background music by Sergei Chetvertnykh from Pixabay
